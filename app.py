@@ -1,9 +1,10 @@
-from app import app
+from flask import Flask
+app = Flask(__name__)
 
-def test_home():
-    client = app.test_client()
+@app.route("/")
+def home():
+    return "Hello, Flask!"
 
-    response = client.get('/')
-
-    assert response.status_code == 200
-    assert response.data == b"Hello, Flask!"
+if __name__ == "__main__":
+    app.run(debug=True)
+    
